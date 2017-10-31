@@ -1,7 +1,7 @@
 ---
 title: "TensorFlow with Keras Interface"
 output: 
-  html_document: 
+  html_notebook: 
     keep_md: yes
 ---
 
