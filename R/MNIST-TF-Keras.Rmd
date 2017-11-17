@@ -7,11 +7,13 @@ output:
 
 MNIST Example: recognizing handwritten digits from the MNIST dataset. Each digit is a 28 x 28 grayscale image. 
 
-```{r setup, include=FALSE}
+```{r warning=FALSE, message=FALSE}
 library(keras)
 library(ggplot2)
 library(imager)
 library(flip)
+
+packageVersion('keras')
 ```
 
 ## 1. Loading the Data
@@ -109,7 +111,7 @@ model %>% compile(loss = "categorical_crossentropy", optimizer = optimizer_rmspr
 # Use the fit() function to train the model with callback for TensorBoard
 epochs <- 15
 tbCallBack = callback_tensorboard("logs")
-history <- model %>% fit(x_train, y_train, epochs = epochs, batch_size = 128, verbose = 1, validation_data = list(x_test, y_test), callbacks = tbCallBack)
+history <- model %>% fit(x_train, y_train, epochs = epochs, batch_size = 128, validation_split = 0.2, callbacks = tbCallBack)
 ```
 
 ## 8. Display the Training Detail
