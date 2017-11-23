@@ -85,11 +85,11 @@ y_test <- to_categorical(y_test, num_classes)
 # creating a sequential model and then adding layers
 model <- keras_model_sequential() 
 model %>% 
-  layer_dense(units = 256, activation = "relu", input_shape = c(784)) %>% 
+  layer_dense(units = 256, activation = "relu", input_shape = c(input_shape)) %>% 
   layer_dropout(rate = 0.4) %>% 
   layer_dense(units = 128, activation = "relu") %>%
   layer_dropout(rate = 0.3) %>%
-  layer_dense(units = 10, activation = "softmax")
+  layer_dense(units = num_classes, activation = "softmax")
 ```
 
 ## 5. Displaying the Details of the Model
